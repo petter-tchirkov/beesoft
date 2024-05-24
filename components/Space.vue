@@ -9,7 +9,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { MeshBasicMaterial } from 'three';
 
 const mountPoint = ref<HTMLElement | null>(null);
 let renderer: THREE.WebGLRenderer;
@@ -59,7 +58,7 @@ onMounted(async () => {
   const gltf = await loader.loadAsync('/scene.gltf');
   const model = gltf.scene;
   const bloomModel = model.clone();
-  model.scale.set(100, 100, 100);
+  model.scale.set(2, 2, 2);
 
   scene.add(model);
   bloomScene.add(bloomModel);
@@ -142,3 +141,4 @@ onUnmounted(() => {
   });
 });
 </script>
+
