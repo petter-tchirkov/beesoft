@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+@font-face {
+	font-family: 'Sequel';
+	src: url('/sequel-100-black-85.ttf')
+}
+
+@font-face {
+	font-family: 'Sequel-Normal';
+	src: url('/sequel-100-black-45.ttf')
+}
+
+
+html,
+body {
+	font-family: 'Montserrat';
+}
+
+.text-sequel {
+	font-family: 'Sequel'
+}
+
+.text-sequel-normal {
+	font-family: 'Sequel-Normal'
+
+}
+
+.orange-gradient {
+	background: linear-gradient(to left, #FF2F01 0%, rgba(249, 102, 1, 0.1) 100%);
+}
+
+.cnr {
+	max-width: 1100px;
+	margin-inline: auto;
+}
+

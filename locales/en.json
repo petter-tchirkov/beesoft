@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "aboutUs": "About Us",
+    "services": "Services",
+    "team": "Team",
+    "portfolio": "Portfolio",
+    "feedback": "Feedback",
+    "contactUs": "Contact Us"
+  },
+  "lang": {
+    "en": "EN",
+    "ua": "UA"
+  }
+}

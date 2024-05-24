@@ -1,0 +1,43 @@
+<script setup lang="ts">
+import { useGLTF } from '@tresjs/cientos'
+import { MeshBasicMaterial } from 'three'
+const { scene: model, nodes } = await useGLTF('/scene.gltf')
+
+const ssMainBaseColor = await useTexture(['/textures/spacestation_main_baseColor.jpeg'])
+const ssMainBaseColor2 = await useTexture(['/textures/spacestation_main2_baseColor.jpeg'])
+const ssSmallLights = await useTexture(['/textures/spacestation_smalllights_baseColor.jpeg'])
+
+const ssMaterial = new MeshBasicMaterial({
+  map: ssMainBaseColor
+})
+
+const ssMaterial2 = new MeshBasicMaterial({
+  map: ssMainBaseColor2
+})
+
+const ssSmallLightsMaterial = new MeshBasicMaterial({
+  map: ssSmallLights
+})
+
+const { map, displacementMap, normalMap, roughnessMap, metalnessMap, aoMap, alphaMap, matcap } = await useTexture({
+  map: '/spacestation_main2_baseColor.jpeg',
+  normalMap: '/spacestation_main2_normal.jpeg',
+  roughnessMap: '/spacestation_smalllights_metallicRoughness.png',
+})
+
+nodes.Object_16.material = ssMaterial
+nodes.Object_14.material = ssMaterial
+nodes.Object_4.material = ssMaterial2
+nodes.Object_8.material = ssMaterial2
+nodes.Object_6.material = ssSmallLightsMaterial
+
+console.log(nodes)
+</script>
+
+<template>
+  <primitive :object="nodes.Object_16" />
+  <primitive :object="nodes.Object_14" />
+  <primitive :object="nodes.Object_4" />
+  <primitive :object="nodes.Object_6" />
+  <primitive :object="nodes.Object_8" />
+</template>

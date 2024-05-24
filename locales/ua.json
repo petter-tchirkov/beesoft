@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "aboutUs": "Про нас",
+    "services": "Послуги",
+    "team": "Команда",
+    "portfolio": "Портфоліо",
+    "feedback": "Відгуки",
+    "contactUs": "Контакти"
+  },
+  "lang": {
+    "en": "EN",
+    "ua": "UA"
+  }
+}
