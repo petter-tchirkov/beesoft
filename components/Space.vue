@@ -1,17 +1,31 @@
 <script setup lang="ts">
 import { useGLTF } from '@tresjs/cientos'
-import { PointsMaterial, Box3, Vector3, PerspectiveCamera, PointLight, AdditiveBlending } from 'three'
+import { Box3, Vector3, PerspectiveCamera, Points, ShaderMaterial, Color } from 'three'
+import { EffectComposer, Bloom } from '@tresjs/post-processing'
 
 const { scene: model, nodes } = await useGLTF('/scene.gltf')
 const { onLoop } = useRenderLoop()
 // Create a new material
-const material = new PointsMaterial({
-  size: 0.0123, // Increase the size for a larger glow effect
-  vertexColors: true,
+const material = new ShaderMaterial({
+  vertexShader: `
+    void main() {
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform vec3 color;
 
+    void main() {
+      vec3 c = color * 1.2; // Increase this value to make the bloom stronger
+      gl_FragColor = vec4(c, 1.0);
+    }
+  `,
+  uniforms: {
+    color: { value: new Color(0xffffff) },
+  },
 })
 // Apply the material to all points in the model
-model.traverse((object) => {
+model.traverse((object: Points) => {
   if (object.isPoints) {
     object.material = material
   }
@@ -19,6 +33,7 @@ model.traverse((object) => {
 
 // Create a bounding box for the model
 let box = new Box3().setFromObject(model)
+
 
 // Create a vector to hold the center of the bounding box
 let center = new Vector3()
@@ -38,11 +53,6 @@ box = new Box3().setFromObject(model)
 // Recalculate the center of the bounding box
 box.getCenter(center)
 
-const light = new PointLight('#C8D9FF', 30, 500)
-light.position.copy(center)
-
-// Add the light to the model
-model.add(light)
 
 // Move the model to the center of the canvas again
 model.position.sub(center)
@@ -58,7 +68,7 @@ onLoop(() => {
     if (model) {
       model.position.add(center)
 
-      model.rotation.y += 0.00009
+      model.rotation.y += 0.00006
 
       model.position.sub(center)
 
@@ -73,6 +83,9 @@ onLoop(() => {
       <Suspense>
         <primitive :object="model" />
       </Suspense>
+      <EffectComposer>
+        <Bloom />
+      </EffectComposer>
       <!-- <TresGridHelper /> -->
     </TresCanvas>
   </Suspense>

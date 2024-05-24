@@ -94,28 +94,28 @@ h2 {
         &:nth-child(1)::before {
             bottom: 0;
             right: 0;
-            clip-path: circle(calc(5.25rem + 7.5vw) at 100% 100%);
+            clip-path: circle(calc(2.25rem + 7.5vw) at 100% 100%);
             background: linear-gradient(308deg, #ff2e00 8.89%, rgba(255, 46, 0, 0) 67.92%);
         }
 
         &:nth-child(2)::before {
             bottom: 0;
             left: 0;
-            clip-path: circle(calc(5.25rem + 7.5vw) at 0% 100%);
+            clip-path: circle(calc(2.25rem + 7.5vw) at 0% 100%);
             background: linear-gradient(35deg, #ff2e00 8.89%, rgba(255, 46, 0, 0) 67.92%);
         }
 
         &:nth-child(3)::before {
             top: 0;
             right: 0;
-            clip-path: circle(calc(5.25rem + 7.5vw) at 100% 0%);
+            clip-path: circle(calc(2.25rem + 7.5vw) at 100% 0%);
             background: linear-gradient(215deg, #ff2e00 8.89%, rgba(255, 46, 0, 0) 67.92%);
         }
 
         &:nth-child(4)::before {
             top: 0;
             left: 0;
-            clip-path: circle(calc(5.25rem + 7.5vw) at 0% 0%);
+            clip-path: circle(calc(2.25rem + 7.5vw) at 0% 0%);
             background: linear-gradient(148deg, #ff2e00 8.89%, rgba(255, 46, 0, 0) 67.92%);
 
         }

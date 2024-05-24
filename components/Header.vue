@@ -6,12 +6,12 @@ const { isMobileMenuShown } = storeToRefs(useGlobalStore())
 <template>
   <header class="fixed w-full z-10 py-9">
     <div class="flex justify-between pl-6 mb-8 cnr">
-      <img src="/images/logo.svg" alt="">
+      <img src="/images/logo.svg" alt="" @click="$router.push('/')">
       <button @click="isMobileMenuShown = !isMobileMenuShown"
         class="bg-orange rounded-l-[36px] px-3 text-sequel text-gray text-xs lg:hidden">MENU</button>
       <div class="hidden lg:flex items-center gap-12">
-        <LanguageSwitcher />
-        <SocialButtons class="hidden lg:flex" />
+        <!-- <LanguageSwitcher /> -->
+        <!-- <SocialButtons class="hidden lg:flex" /> -->
       </div>
     </div>
     <div class="orange-gradient w-64 lg:w-1/2 h-[1px] rotate-180 hidden lg:block"></div>

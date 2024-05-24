@@ -14,9 +14,6 @@ const { y } = useWindowScroll({ behavior: 'smooth' })
     </Suspense>
     <Header />
     <Main />
-    <Team />
-    <Services />
-    <Cases />
     <MobileMenu />
     <ConnectUs :class="{ 'opacity-0 transition-opacity duration-500': y > 500 }" />
   </div>
