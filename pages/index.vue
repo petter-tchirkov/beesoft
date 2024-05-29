@@ -15,6 +15,7 @@ const { y } = useWindowScroll({ behavior: 'smooth' })
     <Header />
     <Main />
     <MobileMenu />
+    <SocialButtons class="fixed bottom-4 left-1/2 -translate-x-1/2 hidden lg:flex" />
     <ConnectUs :class="{ 'opacity-0 transition-opacity duration-500': y > 500 }" />
   </div>
 </template>

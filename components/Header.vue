@@ -1,10 +1,13 @@
 <script setup lang="ts">
 
 const { isMobileMenuShown } = storeToRefs(useGlobalStore())
+import { useWindowScroll } from '@vueuse/core'
+const { y } = useWindowScroll()
+
 </script>
 
 <template>
-  <header class="fixed w-full z-10 py-9">
+  <header class="fixed w-full z-10 pt-9 lg:py-9 transition" :class="{ 'bg-[#191819]': y > 100 }">
     <div class="flex justify-between pl-6 mb-8 cnr">
       <img src="/images/logo.svg" alt="" @click="$router.push('/')">
       <button @click="isMobileMenuShown = !isMobileMenuShown"
@@ -19,7 +22,7 @@ const { isMobileMenuShown } = storeToRefs(useGlobalStore())
       <div class="orange-gradient w-64 lg:w-1/2 h-[1px] rotate-180"></div>
       <SocialButtons />
     </div>
-    <TopNavigation class="hidden lg:flex justify-center my-9" />
+    <TopNavigation class="hidden lg:flex justify-end lg:pr-40 my-9" />
     <div class="orange-gradient hidden lg:block w-64 lg:w-1/2 h-[1px] float-end"></div>
   </header>
 </template>

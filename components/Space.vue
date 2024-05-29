@@ -1,5 +1,5 @@
 <template>
-  <div ref="mountPoint" class="fixed top-0 left-0 -z-10 w-screen h-screen"></div>
+  <div ref="mountPoint" class="fixed top-0 left-0 -z-10"></div>
 </template>
 
 <script setup lang="ts">
@@ -58,12 +58,14 @@ onMounted(async () => {
   const gltf = await loader.loadAsync('/scene.gltf');
   const model = gltf.scene;
   const bloomModel = model.clone();
-  model.scale.set(2, 2, 2);
+  // model.scale.set(2, 2, 2);
 
   scene.add(model);
   bloomScene.add(bloomModel);
 
-  const bloomRenderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+  const bloomWidth = 800;
+  const bloomHeight = 600;
+  const bloomRenderTarget = new THREE.WebGLRenderTarget(bloomWidth, bloomHeight);
   renderer.setRenderTarget(bloomRenderTarget);
   renderer.render(bloomScene, camera);
 
@@ -141,4 +143,3 @@ onUnmounted(() => {
   });
 });
 </script>
-
